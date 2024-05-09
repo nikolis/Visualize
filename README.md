@@ -9,5 +9,5 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-# The tought behind seperating the two different "pages" of the requirements into 2 different live-views in a different session is because the approach for calculating the "current" page the user is currently browsing at in order for the navigation to work was inspired from the https://github.com/fly-apps/live_beats/tree/master. 
+The tought behind seperating the two different "pages" of the requirements into 2 different live-views in a different session is because the approach for calculating the "current" page the user is currently browsing at in order for the navigation to work was inspired from the https://github.com/fly-apps/live_beats/tree/master. 
 
