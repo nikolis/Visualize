@@ -94,11 +94,15 @@ defmodule VisualizeWeb.PlotLive.FormComponent do
   @impl true
   def update(%{plot: plot} = assigns, socket) do
     changeset = Presentation.change_plot(plot, assigns.current_user)
+    plot_data =
+      plot
+      |> get_csv_data()
+      |> calculate_plot_data()
 
     {:ok,
      socket
      |> assign(assigns)
-     |> assign(:plot_context, :not_ready)
+     |> maybe_assign_plot_context(plot_data)
      |> assign_form(changeset)
      |> assign_users()}
   end
