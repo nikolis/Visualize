@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "csv-parse": "^5.5.5",
+    "plotly.js-dist": "^2.32.0",
+    "plotly.js-dist-min": "^2.32.0",
+    "select2": "^4.1.0-rc.0",
+    "stream": "^0.0.2"
+  }
+}

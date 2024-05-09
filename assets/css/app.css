@@ -1,0 +1,86 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+:root {
+  --clr-navbar-dark: #4338CA;
+  --clr-navbar-main: #4F46E5;
+}
+
+html {
+	font-family: system-ui;
+}
+
+.header {
+	color: var(--clr-navbar-main);
+	text-align: center;
+}
+
+.button {
+	background-color: var(--clr-navbar-main);
+}
+button.button:hover{
+	background-color: var(--clr-navbar-dark);
+}
+
+.button_secondary {
+	background-color: white;
+	color: var(--clr-navbar-main);
+	border: 2px solid var(--clr-navbar-main);
+}
+
+button.button_delete {
+	color: black;
+}
+button.button_secondary:hover {
+	color: white;
+	background-color: var(--clr-navbar-main);
+}
+
+
+.select {
+	color: black;
+	border-radius: 10px;
+}
+
+
+.body_side_nav_bar{
+	min-height: 200vh;
+	margin: 0;
+	font-size: 1.25rem;
+	color: white;
+	display: grid;
+	grid-template-columns: 20rem 1fr;
+	gap: 2rem;
+}
+
+
+nav.nav-list-cont {
+	position: sticky;
+	top: 0;
+	max-height: 100svh;
+	background: var(--clr-navbar-main);
+}
+
+.nav-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 1.25rem;
+	padding-block: 2rem;
+}
+
+.nav-list li {
+	padding: 1rem 2rem;
+	margin-inline: 2rem;
+	border-radius: 7px;
+}
+
+.nav-list li.active {
+	background: var(--clr-navbar-dark);
+}
+
+
+

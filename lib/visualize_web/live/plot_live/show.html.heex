@@ -1,0 +1,28 @@
+<.header>
+  Plot <%= @plot.id %>
+  <%= if @plot_context  != :not_ready do %>
+    <div
+      style="height: 500px; width: 600px"
+      id="plotly_container"
+      phx-hook="PlotlyHook"
+      data-plot-context={@plot_context}
+    >
+    </div>
+  <% end %>
+
+  <:actions>
+    <%= if @plot.user_id === @current_user.id  do %>
+      <.link patch={~p"/plots/#{@plot}/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit plot</.button>
+      </.link>
+    <% end %>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @plot.name %></:item>
+  <:item title="Dataset name"><%= @plot.dataset_name %></:item>
+  <:item title="Expression"><%= @plot.expression %></:item>
+</.list>
+
+<.back navigate={~p"/shared_plots"}>Back to shared plots</.back>

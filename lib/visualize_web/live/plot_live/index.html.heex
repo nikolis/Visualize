@@ -1,0 +1,50 @@
+<.header>
+  Listing Plots
+  <:actions>
+    <.link patch={~p"/plots/new"}>
+      <.button>New Plot</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="plots"
+  rows={@streams.plots}
+  row_click={fn {_id, plot} -> JS.navigate(~p"/plots/#{plot}") end}
+>
+  <:col :let={{_id, plot}} label="Name"><%= plot.name %></:col>
+  <:col :let={{_id, plot}} label="Dataset name"><%= plot.dataset_name %></:col>
+  <:col :let={{_id, plot}} label="Expression"><%= plot.expression %></:col>
+  <:action :let={{_id, plot}}>
+    <div class="sr-only">
+      <.link navigate={~p"/plots/#{plot}"}>Show</.link>
+    </div>
+    <.link patch={~p"/plots/#{plot}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, plot}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: plot.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="plot-modal"
+  show
+  on_cancel={JS.patch(~p"/created_plots")}
+>
+  <.live_component
+    module={VisualizeWeb.PlotLive.FormComponent}
+    id={@plot.id || :new}
+    title={@page_title}
+    action={@live_action}
+    plot={@plot}
+    current_user={@current_user}
+    plot_context={@plot_context}
+    patch={~p"/created_plots"}
+  />
+</.modal>
